@@ -23,7 +23,6 @@ nav {
     position: sticky;
     top: 0;
     z-index: 1000;
-    transition: top 0.4s ease;
 }
 
 nav .logo img {
@@ -48,6 +47,19 @@ nav ul li a:hover {
     color: #ff0000;
 }
 
+nav {
+    position: sticky;
+    top: 0;
+    transition: top 0.4s ease;
+}
+
+
+/* ================= NAVBAR SCROLL HIDE ================= */
+nav {
+    transition: top 0.4s ease;
+}
+
+
 /* ================= HOME ================= */
 .home {
     position: relative;
@@ -57,7 +69,6 @@ nav ul li a:hover {
     align-items: center;
     justify-content: center;
     text-align: center;
-    overflow: hidden;
 }
 
 /* ✅ BACKGROUND VIDEO FIXED */
@@ -152,11 +163,13 @@ nav ul li a:hover {
     animation: fadeDown 1.2s ease;
 }
 
+/* 🔥 ABOUT PARAGRAPH – RED & BLUE BLUR LIGHT ANIMATION */
 .about-hero p {
     position: relative;
     font-size: 14px;
     line-height: 1.8;
     font-weight: bold;
+    color: #000;                /* ✅ BLACK TEXT */
     color: #111;
     background: #ffffff;
     padding: 30px;
@@ -166,6 +179,7 @@ nav ul li a:hover {
     z-index: 1;
 }
 
+/* glowing blur effect */
 .about-hero p::before {
     content: "";
     position: absolute;
@@ -183,17 +197,20 @@ nav ul li a:hover {
     animation: aboutGlow 6s ease-in-out infinite;
 }
 
+/* animation */
 @keyframes aboutGlow {
     0%   { background-position: 0% 50%; }
     50%  { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
 
+/* ABOUT US TITLE – CENTER & BOTTOM */
 .about-hero h1 {
     font-size: clamp(28px, 4vw, 40px);
     letter-spacing: 3px;
     color: #ffffff;
 }
+
 
 /* ABOUT CONTENT BOXES */
 .about-content {
@@ -240,13 +257,13 @@ nav ul li a:hover {
 }
 
 .about-why h2 {
-    color: #000;
+    color: #000;           /* BLACK */
     margin-bottom: 30px;
     font-size: 28px;
 }
 
 .about-why p {
-    color: #000;
+    color: #000;           /* BLACK TEXT */
     font-size: 15px;
     line-height: 1.8;
     max-width: 900px;
@@ -255,7 +272,7 @@ nav ul li a:hover {
 }
 
 .about-why strong {
-    color: #000;
+    color: #000;           /* BLACK HEADINGS */
 }
 
 /* ================= MANAGING DIRECTOR PROFILE ================= */
@@ -289,11 +306,12 @@ nav ul li a:hover {
     margin: 0 auto 20px auto;
     font-size: 15px;
     line-height: 1.8;
-    color: #000;
+    color: #000;          /* ✅ BLACK TEXT */
     font-weight: bold;
 }
 
-/* ================= DIRECTOR IMAGE ================= */
+/* ================= DIRECTOR IMAGE WITH ANIMATED CIRCLE ================= */
+
 .director-image {
     position: relative;
     width: 180px;
@@ -312,6 +330,7 @@ nav ul li a:hover {
     background: #fff;
 }
 
+/* animated circle */
 .director-image::before {
     content: "";
     position: absolute;
@@ -332,6 +351,113 @@ nav ul li a:hover {
     0%   { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+/* ================= DIRECTORS LINE ================= */
+.directors-line {
+    text-align: center;
+    font-size: 48px;      /* VERY BIG */
+    font-weight: 900;     /* EXTRA BOLD */
+    letter-spacing: 6px;
+    color: #000;          /* BLACK TEXT */
+    margin: 90px 0 50px;
+}
+
+
+/* ================= CONTACT ================= */
+.contact-page {
+    min-height: 100vh;
+    padding: 80px 20px;
+    background: linear-gradient(135deg,#ff0000,#007bff);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contact-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+    gap: 25px;
+    width: 100%;
+    max-width: 1100px;
+}
+
+.contact-card {
+    background: #ffffff;
+    color: #333;
+    padding: 35px 25px;
+    border-radius: 22px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.35s, background 0.35s;
+}
+
+.contact-card:hover {
+    transform: translateY(-8px);
+    background: linear-gradient(135deg,#007bff,#ff0000);
+    color: #fff;
+}
+
+.contact-card i {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+/* ================= GALLERY ================= */
+.gallery-page {
+    min-height: 100vh;
+    padding: 80px 5%;
+    background: linear-gradient(135deg,#007bff,#ff0000);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
+    gap: 20px;
+}
+
+.gallery-item {
+    overflow: hidden;
+    border-radius: 18px;
+}
+
+.gallery-item img {
+    width: 100%;
+    transition: transform 0.4s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+/* LIGHTBOX */
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.lightbox-img {
+    max-width: 90%;
+    max-height: 80%;
+    border-radius: 15px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 2rem;
+    color: #fff;
+    cursor: pointer;
+}
+
 
 /* ================= FOOTER ================= */
 footer {
