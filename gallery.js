@@ -7,7 +7,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const closeBtn = document.querySelector(".close-btn");
     const images = document.querySelectorAll(".gallery-item img");
 
-    // Open Lightbox
+    // If important elements not found → stop script safely
+    if (!lightbox || !lightboxImg || images.length === 0) {
+        return;
+    }
+
+    // Open lightbox
     images.forEach(function (img) {
         img.addEventListener("click", function () {
             lightbox.style.display = "flex";
@@ -15,12 +20,14 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Close Button
-    closeBtn.addEventListener("click", function () {
-        lightbox.style.display = "none";
-    });
+    // Close button (only if exists)
+    if (closeBtn) {
+        closeBtn.addEventListener("click", function () {
+            lightbox.style.display = "none";
+        });
+    }
 
-    // Click Outside Image
+    // Click outside image
     lightbox.addEventListener("click", function (e) {
         if (e.target === lightbox) {
             lightbox.style.display = "none";
