@@ -220,7 +220,8 @@ footer p {
 }
 
 /* ================= RESPONSIVE ================= */
-@media (max-width: 768px) {
+{
+@media (max-width: 768px)
     nav {
         flex-direction: column;
         gap: 10px;
@@ -230,3 +231,4 @@ footer p {
         font-size: 13px;
         padding: 20px;
     }
+}
