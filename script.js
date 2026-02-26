@@ -1,43 +1,56 @@
-/* ================= CONTACT CARD POPUP ================= */
+document.addEventListener("DOMContentLoaded", function () {
 
-const cards = document.querySelectorAll('.contact-card');
-const popup = document.getElementById('popup');
-const popupText = document.getElementById('popup-text');
-const closeBtn = document.querySelector('.close-btn');
+    /* ================= NAVBAR HIDE ON SCROLL ================= */
 
-cards.forEach(card => {
-    card.addEventListener('click', () => {
-        popupText.textContent = card.getAttribute('data-info');
-        popup.style.display = 'flex';
-    });
-});
+    const navbar = document.querySelector("nav");
 
-closeBtn.addEventListener('click', () => {
-    popup.style.display = 'none';
-});
+    if (navbar) {
+        let lastScrollTop = 0;
 
-window.addEventListener('click', (e) => {
-    if (e.target === popup) {
-        popup.style.display = 'none';
-    }
-});
+        window.addEventListener("scroll", function () {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                navbar.style.top = "-120px"; // hide navbar
+            } else {
+                navbar.style.top = "0"; // show navbar
+            }
 
-/* ================= NAVBAR HIDE ON SCROLL ================= */
-
-let lastScrollTop = 0;
-const navbar = document.querySelector("nav");
-
-window.addEventListener("scroll", function () {
-    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-    if (scrollTop > lastScrollTop && scrollTop > 80) {
-        // scrolling down → hide navbar
-        navbar.style.top = "-120px";
-    } else {
-        // scrolling up → show navbar
-        navbar.style.top = "0";
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        });
     }
 
-    lastScrollTop = scrollTop;
+
+    /* ================= GALLERY LIGHTBOX ================= */
+
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.querySelector(".lightbox-img");
+    const closeBtn = document.querySelector(".close-btn");
+
+    if (lightbox && lightboxImg) {
+
+        const galleryImages = document.querySelectorAll(".gallery-item img");
+
+        galleryImages.forEach(img => {
+            img.addEventListener("click", function () {
+                lightbox.style.display = "flex";
+                lightboxImg.src = this.src;
+            });
+        });
+
+        // Close button
+        if (closeBtn) {
+            closeBtn.addEventListener("click", function () {
+                lightbox.style.display = "none";
+            });
+        }
+
+        // Click outside image
+        lightbox.addEventListener("click", function (e) {
+            if (e.target === lightbox) {
+                lightbox.style.display = "none";
+            }
+        });
+    }
+
 });
